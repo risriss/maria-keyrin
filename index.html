@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untukmu, Maria Keyrin</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Allow margin:auto on container to work vertically */
+            justify-content: center; /* Center horizontally if container is narrower */
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #ffc0cb, #ffb6c1, #ffa07a, #ff69b4);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Lato', sans-serif;
+            /* overflow: hidden; -- REMOVED */
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: opacity 0.5s ease-in-out;
+            max-width: 90%;
+            margin: auto; /* Center vertically and horizontally */
+            overflow-y: auto; /* Enable vertical scrolling for the container */
+            max-height: calc(100vh - 40px); /* Limit container height to viewport minus margin */
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        p {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .section {
+            display: none; /* Hidden by default */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            /* Ensure sections can grow and center their content */
+            flex-direction: column; /* Added for centering content */
+            justify-content: center; /* Added for centering content */
+            align-items: center; /* Added for centering content */
+            min-height: 100%; /* Ensure section takes full height of container if short */
+        }
+
+        .section.active {
+            display: flex; /* Changed from block to flex to enable centering */
+            opacity: 1;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            position: relative;
+            width: 500px; /* Increased width for more movement */
+            height: 300px; /* Increased height for more movement */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        #yes-btn, #yes-proposal-btn, #start-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #yes-btn:hover, #yes-proposal-btn:hover, #start-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #no-btn, #no-proposal-btn {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+            transition: top 0.3s, left 0.3s, font-size 0.3s;
+        }
+        
+        #hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: red;
+            animation: floatUp 4s linear forwards;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+                bottom: -10vh;
+            }
+            100% {
+                transform: translateY(-120vh);
+                opacity: 0;
+                top: -20vh;
+            }
+        }
+
+        /* Styling untuk galeri foto */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .story-image {
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 10px; /* Space between items */
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: #eee; /* Slightly lighter text */
+            margin-top: 5px;
+            max-width: 150px; /* Match image width */
+        }
+
+        @media (max-width: 600px) {
+            .story-image {
+                max-width: 100px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container"></div>
+
+    <div class="container" id="main-container">
+        <div id="intro-section" class="section active">
+            <h1>MARIIAAA TAYANGG AKUUUU</h1>
+            <p>adaa lahhh yang maw kubilanggggg hehhehee</p>
+			<p>klik ini bupp</p>
+			<p>👇👇👇👇</p>
+            <button id="start-btn">LESGOOO!!!</button>
+        </div>
+
+        <div id="love-question-section" class="section">
+            <h2>Kamu sayang aku gak?</h2>
+			<p>pleasee sayang pleasee, soalnya ku sayang kalii ma mariaaa. asli ndak boong</p>
+			<p>yayaya sayangg yaaaaaaa</p>
+            <div class="button-container">
+                <button id="yes-btn">Iyaaaa, sayaaanggggg</button>
+                <button id="no-btn">Nggak dih hoek</button>
+            </div>
+        </div>
+
+        <div id="intermediate-love-section" class="section">
+            <h2>Jadi ginii sayangg akuu. Setiap detik sama maria ituuu berhargaa, dan seruuu.<br>Aku mauuu ciptainn yang leeebbbiiiihhhh banyaaaakkkk cerita sama mariaaa.</h2>
+            <div class="image-gallery">
+                <div class="image-item">
+                    <img src="images/photo1.jpg" alt="Kenangan indah 1" class="story-image">
+                    <p class="image-caption">LOOKKKK CEWEEE CANTII INIII 😍😍</p>
+				</div>
+                <div class="image-item">
+                    <img src="images/photo2.jpg" alt="Kenangan indah 2" class="story-image">
+                    <p class="image-caption">AW AW AWWW 😘😘</p>
+                </div>
+              
+					<p>Aku tauu, kita masih belum punya banyakkk kenangan indahh, masih belum pernah ketemuuu</p>
+					<p>Tapii itu gak buat aku jadi nyerahh, malah itu jadi bahan bakar semangatkuu. biar apaa?</p>
+					<p>Biarr kita bisaa ketemuu besokk, kita jalani rencana rencana ngaur kita ituuu wkwkwk, kita ketawa barengnya ndakk lewat hp lagii. seruuu kayanya yakkkkk</p>
+					<p>Maka darii ituuuu, aku mau seriusinn hubungan kita inii. Aku mau jadi milik Mariaaa sepenuhnyaaa. Biar aku bisa teruss diamarahinn sama mariaa tanpa harus segan segan lagiii. Biar aku bisa diomelin sama mariaaaa</p>
+					<p>Aku sukaa digituinn sama mariaa, hidupku yang sebelumnya gak punya warna sama sekaliii, sejak ada mariaa jadi berwarnaaa</p>
+					<p>Masih ingatt ndak sama inii  "aku sayang maria, aku cintahh mariaa. aku suka diganggu sama mariaa, aku sukaa dicariin sama mariaa. aku suka diusilin sama mariaa, aku gak bakal risih, ilfil apapun itu. aku juga gak bakal ngerasa risih kalo maria maraa², ngatur², aku sukaaa, karna aku sayang mariaaaa. yang ada aku bakal makin sayang setiap harinyaa, bakal makin cintaa tiap harinya"</p>
+					<p>Wkwkwkwk, itu masih tetap berlakuu yaa sampe kapan punn ituu</p>
+					<p>Semogaaa kamm mauuuuu yaaaaa</p>
+			  
+			  <div class="image-item">
+                    <img src="images/photo3.jpg" alt="Kenangan indah 3" class="story-image">
+                    <p class="image-caption">Aku mauuu lahhh lama lamaaa bareng anak iniiii😢😢</p>
+                </div>
+                <div class="image-item">
+                    <img src="images/photo4.jpg" alt="Kenangan indah 4" class="story-image">
+                    <p class="image-caption">Selamanya?🥺🥺</p>
+                </div>
+			</div>
+			<div class="button-container">
+                <button id="continue-intermediate-btn">Lanjut</button>
+            </div>
+        </div>
+
+
+		
+        <div id="proposal-section" class="section">
+            <h2>Aku mau ciptain lebih banyakk momen kitaa.<br>Soooo, Will You Be My Lover?</h2>
+            <div class="button-container">
+                <button id="yes-proposal-btn">MAU MAU MAUU MAUUU, MAUU BANGETTTT</button>
+                <button id="no-proposal-btn">Nggak mau</button>
+            </div>
+        </div>
+
+        <div id="final-message" class="section">
+            <h1>Yeay! I Love You More! ❤️</h1>
+            <p>Kita mulai cerita kita dari sini ya.</p>
+        </div>
+    </div>
+
+    <script>
+        const startBtn = document.getElementById('start-btn');
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const continueIntermediateBtn = document.getElementById('continue-intermediate-btn');
+        const noProposalBtn = document.getElementById('no-proposal-btn');
+        const yesProposalBtn = document.getElementById('yes-proposal-btn');
+
+        const introSection = document.getElementById('intro-section');
+        const loveQuestionSection = document.getElementById('love-question-section');
+        const intermediateLoveSection = document.getElementById('intermediate-love-section');
+        const proposalSection = document.getElementById('proposal-section');
+        const finalMessage = document.getElementById('final-message');
+        const heartsContainer = document.getElementById('hearts-container');
+
+        let noButtonFontSize = 16;
+
+        // Function to show a section and hide others
+        const showSection = (sectionToShow) => {
+            const allSections = document.querySelectorAll('.section');
+            allSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            sectionToShow.classList.add('active');
+        };
+
+        // Initial state
+        showSection(introSection);
+
+        startBtn.addEventListener('click', () => {
+            showSection(loveQuestionSection);
+            noButtonFontSize = 16; // Reset font size for the no button
+            noBtn.style.fontSize = noButtonFontSize + 'px';
+            moveButton(noBtn); // Call moveButton immediately for initial random position
+        });
+
+        const moveButton = (button) => {
+            const parentContainer = button.parentElement; // This will be the .button-container
+            const parentRect = parentContainer.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+
+            // Calculate new positions relative to the parent container
+            // Ensure the button stays within the parent's bounds
+            const newTop = Math.random() * (parentRect.height - buttonRect.height);
+            const newLeft = Math.random() * (parentRect.width - buttonRect.width);
+
+            button.style.top = newTop + 'px';
+            button.style.left = newLeft + 'px';
+            
+            // Decrease font size
+            let currentFontSize = parseFloat(window.getComputedStyle(button).fontSize);
+            currentFontSize *= 0.85;
+            if (currentFontSize < 8) currentFontSize = 8; // Minimum size to prevent disappearing
+            button.style.fontSize = currentFontSize + 'px';
+        };
+
+        noBtn.addEventListener('mouseover', () => moveButton(noBtn));
+        noBtn.addEventListener('click', (e) => { e.preventDefault(); moveButton(noBtn); }); // Prevent actual click
+        
+        noProposalBtn.addEventListener('mouseover', () => moveButton(noProposalBtn));
+        noProposalBtn.addEventListener('click', (e) => { e.preventDefault(); moveButton(noProposalBtn); }); // Prevent actual click
+
+        yesBtn.addEventListener('click', () => {
+            showSection(intermediateLoveSection);
+        });
+
+        continueIntermediateBtn.addEventListener('click', () => {
+            showSection(proposalSection);
+            noButtonFontSize = 16; // Reset font size for the next no button
+            noProposalBtn.style.fontSize = noButtonFontSize + 'px';
+            moveButton(noProposalBtn); // Call moveButton immediately for initial random position
+        });
+
+        yesProposalBtn.addEventListener('click', () => {
+            showSection(finalMessage);
+            
+            // Start flying hearts
+            setInterval(createHeart, 100);
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💖', '💕', '💓', '💗'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's'; // 3-5 seconds
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
